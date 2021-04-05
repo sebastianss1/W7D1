@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  helper_method :current_user, :logged_in?
 
   def require_logged_in
     redirect_to new_session_url unless logged_in? 
