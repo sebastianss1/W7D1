@@ -8,6 +8,10 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Cat
 
+    has_many :cat_rental_requests,
+    foreign_key: :user_id,
+    class_name: :CatRentalRequest
+
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)
         if user && user.is_password?(password)
@@ -28,6 +32,7 @@ class User < ApplicationRecord
     end 
 
     def password=(password)
+        debugger
         self.password_digest = BCrypt::Password.create(password)
         @password = password 
     end 
