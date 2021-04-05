@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <header>
+      <% if @current_user == nil %>
+        <a href="<%= new_session_url %>">Login</a>
+        <a href="<%= new_user_url %>">Sign up</a>
+      <% else %>
+        <%= @current_user.username %>
+        <a href= "<%= session_url %>" > Logout </a>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
